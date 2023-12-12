@@ -1,0 +1,22 @@
+1. Create network for crosstalk
+	- sudo docker network create --driver bridge test_network
+2. Pull mysql form hub
+	- sudo docker pull mysql
+	- sudo docker run -p 3306:3306 --name mysqlDB --network test_network -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
+	- Connect to azuredatastudio{
+		create DATABASE Rupesh{
+		drop table User
+		CREATE TABLE User(
+		    email VARCHAR(25),
+		    pass VARCHAR(10)
+		)
+		SELECT * from User;
+		ALTER user 'root'@'localhost' IDENTIFIED with  mysql_native_password by 'root123';
+	}
+	
+3. Unzip Project
+4. Create docker container of project 
+	- sudo docker build . -t rupesh/node-web-app.
+	- sudo docker run -p 8081:8081 -itd --name webapp --network test_network rupesh/node-web-app:latest
+	
+
